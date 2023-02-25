@@ -1,15 +1,20 @@
 import React from "react";
-import Header from "./components/Header/Header.jsx";
-import Main from "./Main";
-import { Provider } from "react-redux";
-import store from "./store.js";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const store = useSelector((state) => state);
+  console.log("store", store);
+  const dispatch=useDispatch();
+  const increment = () => {
+    dispatch({type:"ADD"})
+  };
   return (
-    <Provider store={store}>
-      <Header />
-      <Main />
-    </Provider>
+    <div>
+      <h1> Count : 0 </h1>
+      <button onClick={increment}> - </button>
+      <button> + </button>
+      <button>0</button>
+    </div>
   );
 }
 

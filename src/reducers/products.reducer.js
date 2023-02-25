@@ -2,13 +2,18 @@ import { SET_PRODUCTS } from "../types/products.types";
 
 export const productsInitialState = [];
 
-const productsReducer = (state = productsInitialState, action) => {
+const countSlice = (state = 0, action) => {
+  console.log(action);
   switch (action.type) {
-    case SET_PRODUCTS:
-      return [...action.payload];
+    case "ADD":
+      return state + 1;
+    case "SUB":
+      return state - 1;
+    case "ZERO":
+      return 0;
     default:
       return state;
   }
 };
 
-export default productsReducer;
+export default countSlice;
